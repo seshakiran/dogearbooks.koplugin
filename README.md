@@ -2,7 +2,7 @@
 
 **DogEarBooks is a fork of [Book Nook Charms by KitanaCode](https://github.com/KitanaCode/booknookcharms.koplugin). The original project deserves credit and praise for its inventive approach to personalizing KOReader bookmarks. This fork adds the features and collections described below.**
 
-DogEarBooks customizes the bookmark displayed on bookmarked pages while reading. This fork is currently at **version 1.5**.
+DogEarBooks customizes the bookmark displayed on bookmarked pages while reading.
 
 ## Installation
 
