@@ -1,0 +1,10 @@
+{
+  "upstream_repository": "https://github.com/Wolfazzo/dogearbooks-koreader",
+  "upstream_commit": "4da4f9ea407f950e4385a2f87772339f75704c97",
+  "upstream_plugin_version": "1.6",
+  "upstream_archive_sha256": "244b5a0bae36274705ea43ae9e5e5dff15c78a43f6622d80d5d4460e5a83af3a",
+  "runtime_changes": false,
+  "integration_fix_repository": "https://github.com/seshakiran/pagescribe.koplugin",
+  "minimum_pagescribe_version": "0.12.1",
+  "device_confirmation": "Viwoods AiPaper Mini: native bookmarking works with both plugins enabled, confirmed November 20, 2026."
+}

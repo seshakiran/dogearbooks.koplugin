@@ -1,114 +1,90 @@
 # DogEarBooks for KOReader
 
-**DogEarBooks is a fork of [Book Nook Charms by KitanaCode](https://github.com/KitanaCode/booknookcharms.koplugin). The original project deserves credit and praise for its inventive approach to personalizing KOReader bookmarks. This fork adds the features and collections described below.**
+Decorative bookmarks for KOReader: choose a charm, ribbon, or corner image, then use KOReader’s normal page bookmarks. This fork packages **DogEarBooks 1.6** with browsable source code and installation instructions, including the confirmed PageScribe combination on a **Viwoods AiPaper Mini**.
 
-DogEarBooks customizes the bookmark displayed on bookmarked pages while reading.
+DogEarBooks works independently. PageScribe is optional; when using both, install **PageScribe 0.12.1 or newer**.
 
-## Installation
+## Install
 
-1. Download the project and extract the archive.
-2. Copy the plugin folder into KOReader's plugins directory, using this exact name:
+1. Download **dogearbooks.koplugin.zip** from [Releases](https://github.com/seshakiran/dogearbooks.koplugin/releases/latest).
+2. Extract it and copy the whole **dogearbooks.koplugin** folder into KOReader’s **plugins** directory.
+3. Fully close and reopen KOReader. Enable **dogearbooks** in the plugin manager if needed, then restart again.
+4. Open a book and find **dogearbooks** in the **Typesetting** menu.
 
-   ```text
-   koreader/plugins/dogearbooks.koplugin/
-   ```
-
-   Or Download from StoreFront
-
-3. Restart KOReader, open a book, and find **dogearbooks** in the typesetting menu.
-4. Bookmark a page to see your chosen image while reading.
-
-Gesture availability can depend on your device and KOReader version.
-
-## Gallery and folders
-
-The library presents image previews across multiple pages. The **Folders** menu lets you browse individual collections and their subfolders.
-
-For example, open **Folders**, choose **Movies**, and tap a preview to apply that bookmark. You can also choose an image from the gallery inside Charm Studio.
-
-## Favorites
-
-The **Favorites** menu shows collection folders and your saved favorites. Open a folder and hold a preview to add or remove it from your favorites. Tap a preview normally to apply it. You can also cycle through favorites using a gesture action.
-
-For example, hold a bear in **bears**, then open **Saved Favorites** to find it alongside selections from other collections.
-
-## Studio, position and size
-
-**Charm Studio** lets you choose an image, adjust its size, and move it relative to the top and right edges. Use the buttons for incremental adjustments, or tap a position value to enter it with the keyboard. Position values range from 0 to 20.
-
-For example, set the top position to 10, the right position to 2, and adjust the size. Press **Save** to keep your changes. When you select another image from the gallery or favorites, the current position and size are retained.
-
-**Default** saves the current look as your default. **Cancel** restores the state from before you opened Studio. Reset options and looks saved for an individual book can apply their own settings.
-
-The preview updates within the panel as you make changes. Touches stay within the panel, helping prevent accidental page turns during rapid adjustments.
-
-## New collections
-
-- **bears** contains six polar bear bookmarks, prepared as SVGs with transparent outer backgrounds.
-- **Movies** contains stylized cinema-themed images, including Igor, Alien, Kill Bill, Charlie Chaplin, A Clockwork Orange, the Grinch, and Shining.
-- **night/bears** and **night/Movies** contain corresponding versions for dark mode.
-
-The artwork retains its internal black and white details. Transparent outer areas reveal the content underneath.
-
-## Day and night
-
-The **Day/Night Pair** menu lets you save an image for each mode and switch between them manually. You can also enable automatic switching when KOReader's night mode changes. Studio includes controls to save the current look as the day or night selection.
-
-For example, choose a bear, adjust its position and size, then enable automatic pairing. For images in **bears** and **Movies**, the plugin can find the corresponding variant in the **night** folder when needed. Explicitly saved pairs take precedence and can have their own settings.
-
-## Adding images and collections
-
-Add files to an existing folder, such as `Movies/`, or create a dedicated folder inside `dogearbooks.koplugin/`. The plugin discovers folders and displays them in the **Folders** menu. Adding an image to a collection requires no code changes. Reopen the gallery after copying files.
-
-You can also use `custom_icons/` or create collections in KOReader's data folder at `icons/booknookcharms/`. Supported formats include SVG, PNG, BMP, JPG, JPEG, and alpha files. The `ribbon_` prefix identifies ribbon-shaped bookmarks.
-
-Example layout:
+The exact layout must be:
 
 ```text
-dogearbooks.koplugin/
-├── bears/
-├── Movies/
-├── custom_icons/
-├── dogears/
-├── ribbons/
-├── night/
-│   ├── bears/
-│   └── Movies/
-└── templates/
+koreader/
+└── plugins/
+    └── dogearbooks.koplugin/
+        ├── main.lua
+        ├── _meta.lua
+        ├── dogearbooks_gallery.lua
+        └── ...
 ```
 
-Automatic matching of the included variants is provided for **bears** and **Movies**. For a custom collection, you can select and save both images manually as a day/night pair.
+Do not copy only the ZIP, rename the plugin folder, or nest it twice. GitHub’s automatic “Source code” ZIP is a repository snapshot; the release asset named **dogearbooks.koplugin.zip** is the ready-to-install package. Existing users should back up any custom images before replacing their plugin folder.
 
-## Language
+## Add and use a bookmark
 
-The menu follows the language selected in KOReader. The fork includes translation catalogs for the languages present in the project. If a translation is unavailable, the plugin uses its fallback text.
+1. Open a book.
+2. Tap the **very top-right corner with your finger** to bookmark the current page. Tap it again to remove the bookmark.
+3. Open KOReader’s top menu → **Bookmarks** to revisit a saved page.
+4. Choose a design under **Typesetting → dogearbooks → Charm Library** or **Folders**. Use **Charm Studio** to adjust size and position, then save.
 
-## Drawing above reading information
+DogEarBooks changes the image shown on an already bookmarked page. Choosing an image in the gallery does not create a page bookmark. Gesture assignments can vary by device and user configuration.
 
-The bookmark is drawn after the reader view's other elements, including Bookends text. Opaque parts of the image can cover that text, while transparent areas let it show through. Menus and dialogs remain accessible above the page. DogEarBooks handles the drawing order independently and does not require Bookends.
+## Using DogEarBooks with PageScribe
 
-## Technical improvements
+Install [PageScribe 0.12.1 or newer](https://github.com/seshakiran/pagescribe.koplugin/releases/latest) alongside this plugin. Keep their folder names:
 
-Gallery previews load progressively for the visible page. When the gallery closes, the plugin frees previews and cancels pending preview loading. Studio updates the reader view without reopening its panel for every adjustment.
+```text
+koreader/plugins/dogearbooks.koplugin/
+koreader/plugins/fingerink.koplugin/    ← PageScribe’s retained installation name
+```
 
-Image loading uses checks and a fallback image when available. Saved paths can be repaired by searching for the filename. Automatic day/night switching follows night-mode events and requires no continuous polling loop. Existing settings and actions are preserved where possible after the plugin rename.
+PageScribe provides handwriting and its floating toolbar. DogEarBooks decorates KOReader’s native page bookmarks. Each plugin can be installed and used on its own.
 
-## Existing features
+For the confirmed reading/bookmark workflow:
 
-The fork retains ribbon and corner bookmarks, image categories, Studio presets, per-book looks, assignable gesture actions, and the **Troubleshooting** screen for checking settings. Availability of some features depends on the installed KOReader version.
+1. In PageScribe, choose **Read**.
+2. Close the toolbar with **×**, leaving the small handwriting launcher visible.
+3. Tap the page’s **top-right corner with your finger**.
+4. Check the chosen charm or KOReader’s **Bookmarks** list.
+
+An expanded PageScribe toolbar uses the first outside tap to close itself, so close it before using the corner shortcut. Finger behavior in drawing modes depends on PageScribe’s selected input mode; the steps above use Read mode.
+
+### Why PageScribe 0.12.1 is needed
+
+Earlier PageScribe versions could block the bookmark action even in Read mode with the tray closed. KOReader processes the corner tap, then dispatches a separate **ToggleBookmark** event. Because PageScribe’s floating toolbar was the top window, the action did not reach the reader.
+
+The [PageScribe fix](https://github.com/seshakiran/pagescribe.koplugin/commit/f098bcd) relays those reader actions through KOReader’s active-widget dispatch while preserving dialog precedence. Input is not forwarded twice, and broadcast/lifecycle events are not duplicated.
+
+**The compatibility fix is in PageScribe; DogEarBooks’ runtime code is unchanged.** Reinstalling DogEarBooks alone will not fix an older PageScribe installation. Native bookmarking with both plugins enabled was confirmed on a Viwoods AiPaper Mini on November 20, 2026. Other devices and KOReader builds still need testing; this does not claim universal compatibility.
+
+## Collections and customization
+
+Use **Folders** to browse collections and **Favorites** to keep preferred designs. Hold a preview to add or remove a favorite; tap it normally to choose it. **Day/Night Pair** supports separate designs and optional automatic switching with KOReader’s night mode.
+
+Add supported SVG, PNG, BMP, JPG, JPEG, or alpha images to a collection folder or `custom_icons/`. The original feature guide, collection details, and customization instructions are preserved in [the upstream README](docs/UPSTREAM_README.md) and the plugin’s own README.
+
+## Troubleshooting
+
+- **No dogearbooks menu:** check the exact installation path, enable the plugin, restart KOReader, and open a book.
+- **Corner tap does nothing with PageScribe:** update PageScribe to 0.12.1 or newer, restart, choose Read, and close its tray. Check the reader’s top-right tap assignment under KOReader’s gesture settings.
+- **Page is in Bookmarks but no image appears:** select a design and use Charm Studio to check size and position. Try a day-mode design on a light page.
+- **Page is absent from Bookmarks:** the native bookmark action did not add it; selecting another decorative image will not create it.
+
+For a report, include your device, KOReader version, both plugin versions, whether the PageScribe tray is open, and whether the page appears in KOReader’s Bookmarks list. Share error text without account credentials or private settings files.
+
+## Source and packaging
+
+The installable source lives in [dogearbooks.koplugin](dogearbooks.koplugin/). Run `./scripts/package.sh` to build `dist/dogearbooks.koplugin.zip`. CI parses the Lua files with Lua 5.1 and verifies the package inventory; device behavior is a separate manual check.
+
+The original upstream ZIP is retained at the repository root. [Provenance](docs/provenance.json) records the upstream revision and archive checksum used for the device-tested package.
 
 ## Credits and license
 
-Original project created by **KitanaCode**. Fork modified by **Wolfazzo**. The original project credits the cat bookmarks to **u/AggravatingDebt4621**.
+DogEarBooks is [Wolfazzo’s fork](https://github.com/Wolfazzo/dogearbooks-koreader) of [Book Nook Charms by KitanaCode](https://github.com/KitanaCode/booknookcharms.koplugin). The original project credits cat bookmarks to **u/AggravatingDebt4621**. This fork adds source packaging and PageScribe integration documentation; it retains upstream’s runtime, artwork, history, and attribution.
 
-Distributed under the MIT license. See [LICENSE](LICENSE).
-
-<img width="310" height="437" alt="ksnip_20261119-172153" src="https://github.com/user-attachments/assets/3258092e-cfbe-4884-abc5-386a5c86450b" />
-
-<img width="310" height="438" alt="ksnip_20261119-172135" src="https://github.com/user-attachments/assets/f0faa219-71c4-4b15-97d0-eb41345124d6" />
-
-<img width="308" height="437" alt="ksnip_20261119-172120" src="https://github.com/user-attachments/assets/177ea507-c98e-4204-b78b-bd87596f8cec" />
-
-<img width="309" height="439" alt="ksnip_20261119-172101" src="https://github.com/user-attachments/assets/19817e8b-1902-4112-adcc-48bffc820354" />
-
-
+DogEarBooks is distributed under the **MIT license**; see [LICENSE](LICENSE) and the included plugin license. PageScribe is a separate **AGPL-3.0** project and remains in its own repository and package.
