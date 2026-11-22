@@ -1,7 +1,7 @@
-local _ = require("dogearbooks_i18n")
+local _ = require("gettext")
 return {
     name = "dogearbooks",
-    fullname = "dogearbooks",
-    description = _("Corner Charms") .. " · " .. _("Ribbon Charms"),
-    version = "1.6",
+    fullname = _("DogEarBooks"),
+    version = "1.6.1",
+    description = _("Decorative corner and ribbon bookmarks for KOReader. Works independently or alongside PageScribe 0.12.1 or newer."),
 }

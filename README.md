@@ -4,6 +4,15 @@ Decorative bookmarks for KOReader: choose a charm, ribbon, or corner image, then
 
 DogEarBooks works independently. PageScribe is optional; when using both, install **PageScribe 0.12.1 or newer**.
 
+## Install and update through the community App Store
+
+In [KOReader App Store](https://github.com/omer-faruq/appstore.koplugin), open **Tools → App Store → Plugins**, refresh the catalogue, and search for **DogEarBooks** or filter by owner **seshakiran**. Select **seshakiran/dogearbooks.koplugin** and choose **Install**, then fully restart KOReader. If the entry is missing from a cached catalogue, use **Plugins → ⚙ → Install plugin from URL** and enter `https://github.com/seshakiran/dogearbooks.koplugin`.
+
+For updates, open **App Store → Check plugin updates** and select this plugin. For a manually installed copy, use **Match with URL** once to associate it with the repository above. Update the existing installation and restart KOReader; do not create a second plugin folder. Release assets and repository archives both identify the same runtime folder, `dogearbooks.koplugin`.
+
+PageScribe is optional. If installed together, use PageScribe 0.12.1 or newer for the native bookmark fix. Back up custom artwork before updates; keep original upstream credits and licenses with shared collections.
+
+
 ## Install
 
 1. Download **dogearbooks.koplugin.zip** from [Releases](https://github.com/seshakiran/dogearbooks.koplugin/releases/latest).

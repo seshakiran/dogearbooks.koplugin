@@ -9,6 +9,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install validation tools
         run: sudo apt-get update && sudo apt-get install -y lua5.1 zip unzip
+      - name: Verify marketplace metadata
+        run: lua5.1 scripts/check-marketplace.lua dogearbooks.koplugin/_meta.lua dogearbooks VERSION
       - name: Check Lua syntax
         run: find dogearbooks.koplugin -type f -name '*.lua' -print0 | xargs -0 -n 1 luac5.1 -p
       - name: Build and verify package
